@@ -88,7 +88,7 @@ void networks(struct host *hosts)
     strncpy(ifr.ifr_name, interface, IFNAMSIZ-1);
     ioctl(fd, SIOCGIFADDR, &ifr);
     close(fd);
-    snprintf(hosts->ip, 128, inet_ntoa(((struct sockaddr_in *)&ifr.ifr_addr)->sin_addr));
+    strncpy(hosts->ip, inet_ntoa(((struct sockaddr_in *)&ifr.ifr_addr)->sin_addr), 128);
 }
 
 
